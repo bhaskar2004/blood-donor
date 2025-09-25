@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "name": "Bhaskar Kumar",
+    "bloodGroup": "O+",
+    "city": "Bangalore",
+    "phone": "9876543210",
+    "email": "bhaskar.kumar@email.com",
+    "lastDonation": "2024-01-15",
+    "availability": "Available"
+  },
+  {
+    "id": "2",
+    "name": "Priya Sharma",
+    "bloodGroup": "A+",
+    "city": "Mumbai",
+    "phone": "9123456789",
+    "email": "priya.sharma@email.com",
+    "lastDonation": "2024-02-20",
+    "availability": "Available"
+  },
+  {
+    "id": "3",
+    "name": "Rajesh Patel",
+    "bloodGroup": "B-",
+    "city": "Delhi",
+    "phone": "9988776655",
+    "email": "rajesh.patel@email.com",
+    "lastDonation": "2024-03-10",
+    "availability": "Available"
+  },
+  {
+    "id": "4",
+    "name": "Anita Singh",
+    "bloodGroup": "AB+",
+    "city": "Chennai",
+    "phone": "9876123450",
+    "email": "anita.singh@email.com",
+    "lastDonation": "2024-01-25",
+    "availability": "Available"
+  },
+  {
+    "id": "5",
+    "name": "Mohammed Ali",
+    "bloodGroup": "O-",
+    "city": "Hyderabad",
+    "phone": "9234567890",
+    "email": "mohammed.ali@email.com",
+    "lastDonation": "2024-02-05",
+    "availability": "Available"
+  },
+  {
+    "id": "6",
+    "name": "Sneha Reddy",
+    "bloodGroup": "A-",
+    "city": "Pune",
+    "phone": "9345678901",
+    "email": "sneha.reddy@email.com",
+    "lastDonation": "2024-01-30",
+    "availability": "Available"
+  },
+  {
+    "id": "7",
+    "name": "Vikram Gupta",
+    "bloodGroup": "B+",
+    "city": "Kolkata",
+    "phone": "9456789012",
+    "email": "vikram.gupta@email.com",
+    "lastDonation": "2024-03-05",
+    "availability": "Available"
+  },
+  {
+    "id": "8",
+    "name": "Deepika Nair",
+    "bloodGroup": "AB-",
+    "city": "Bangalore",
+    "phone": "9567890123",
+    "email": "deepika.nair@email.com",
+    "lastDonation": "2024-02-15",
+    "availability": "Available"
+  },
+  {
+    "id": "9",
+    "name": "Arjun Verma",
+    "bloodGroup": "O+",
+    "city": "Mumbai",
+    "phone": "9678901234",
+    "email": "arjun.verma@email.com",
+    "lastDonation": "2024-01-10",
+    "availability": "Available"
+  },
+  {
+    "id": "10",
+    "name": "Kavya Iyer",
+    "bloodGroup": "A+",
+    "city": "Chennai",
+    "phone": "9789012345",
+    "email": "kavya.iyer@email.com",
+    "lastDonation": "2024-02-28",
+    "availability": "Available"
+  }
+]
