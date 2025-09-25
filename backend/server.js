@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
+app.get('/', (req, res) => res.send('Blood Donor API is running'));
 const donorRoutes = require('./routes/donors');
 app.use('/api/donors', donorRoutes);
 
