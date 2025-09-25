@@ -59,7 +59,8 @@ const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
         availability: "Available",
       };
 
-      const response = await fetch('/api/donors', {
+      const apiUrl = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${apiUrl}/donors`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
