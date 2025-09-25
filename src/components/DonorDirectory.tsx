@@ -29,7 +29,7 @@ const DonorDirectory = ({ onBackToHome }: DonorDirectoryProps) => {
     const fetchDonors = async () => {
       try {
         const apiUrl = import.meta.env.VITE_API_URL || '/api';
-        const response = await fetch(`${apiUrl}/donors`);
+        const response = await fetch(`${apiUrl}/api/donors`);
         const data = await response.json();
         setDonors(data);
       } catch (error) {
