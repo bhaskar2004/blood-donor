@@ -13,7 +13,7 @@ interface AddDonorFormProps {
 }
 
 const BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
-const CITIES = ["Bangalore", "Mumbai", "Delhi", "Chennai", "Hyderabad", "Pune", "Kolkata", "Ahmedabad", "Jaipur", "Surat"];
+
 
 const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
   const { toast } = useToast();
@@ -35,7 +35,7 @@ const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.phone || !formData.bloodGroup || !formData.city) {
       toast({
@@ -47,16 +47,35 @@ const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
     }
 
     setIsSubmitting(true);
-    
-    // Simulate form submission (in real app, this would go to Supabase)
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      const donorData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        bloodGroup: formData.bloodGroup,
+        city: formData.city,
+        lastDonation: formData.lastDonation || new Date().toISOString().split('T')[0],
+        availability: "Available",
+      };
+
+      const response = await fetch('/api/donors', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(donorData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to register donor');
+      }
+
       toast({
         title: "Registration Successful! 🎉",
         description: "Thank you for becoming a blood donor. You'll be contacted when needed.",
       });
-      
+
       // Reset form
       setFormData({
         name: "",
@@ -111,13 +130,13 @@ const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
       {/* Form Section */}
       <main className="max-w-4xl mx-auto px-4 py-12">
         {/* Info Alert */}
-        <Alert className="mb-8 bg-accent border-primary/20">
+        {/* <Alert className="mb-8 bg-accent border-primary/20">
           <Info className="h-4 w-4" />
           <AlertDescription className="text-accent-foreground">
             <strong>Note:</strong> This form currently saves data locally for demonstration. 
             Connect to Supabase to store donor information permanently in a database.
           </AlertDescription>
-        </Alert>
+        </Alert> */}
 
         <Card className="shadow-elegant">
           <CardHeader className="text-center pb-6">
@@ -220,22 +239,18 @@ const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="flex items-center text-foreground">
+                  <Label htmlFor="city" className="flex items-center text-foreground">
                     <MapPin className="w-4 h-4 text-primary mr-2" />
                     City *
                   </Label>
-                  <Select value={formData.city} onValueChange={(value) => handleInputChange('city', value)}>
-                    <SelectTrigger className="bg-background">
-                      <SelectValue placeholder="Select your city" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {CITIES.map((city) => (
-                        <SelectItem key={city} value={city}>
-                          {city}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Input
+                    id="city"
+                    placeholder="Enter your city"
+                    value={formData.city}
+                    onChange={(e) => handleInputChange('city', e.target.value)}
+                    className="bg-background"
+                    required
+                  />
                 </div>
               </div>
 
@@ -307,7 +322,7 @@ const AddDonorForm = ({ onBackToHome }: AddDonorFormProps) => {
       {/* Footer */}
       <footer className="mt-16 py-8 px-4 bg-muted text-center">
         <p className="text-muted-foreground text-lg font-medium">
-          💝 "One pint of blood can save three lives." 💝
+           "Just a small amount of your blood can save someone’s life. Be a hero, donate blood."
         </p>
       </footer>
     </div>

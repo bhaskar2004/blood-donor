@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, MapPin, Droplets, Calendar, CheckCircle } from "lucide-react";
 
 interface Donor {
-  id: string;
+  _id: string;
   name: string;
   bloodGroup: string;
   city: string;

@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Users, AlertCircle } from "lucide-react";
 import SearchBar from "./SearchBar";
 import DonorCard from "./DonorCard";
-import donorsData from "@/data/donors.json";
 
 interface Donor {
-  id: string;
+  _id: string;
   name: string;
   bloodGroup: string;
   city: string;
@@ -23,7 +22,24 @@ interface DonorDirectoryProps {
 const DonorDirectory = ({ onBackToHome }: DonorDirectoryProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBloodGroup, setSelectedBloodGroup] = useState("All");
-  const [donors] = useState<Donor[]>(donorsData);
+  const [donors, setDonors] = useState<Donor[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDonors = async () => {
+      try {
+        const response = await fetch('/api/donors');
+        const data = await response.json();
+        setDonors(data);
+      } catch (error) {
+        console.error('Error fetching donors:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDonors();
+  }, []);
 
   // Filter donors based on search criteria
   const filteredDonors = useMemo(() => {
@@ -101,7 +117,7 @@ const DonorDirectory = ({ onBackToHome }: DonorDirectoryProps) => {
         {filteredDonors.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredDonors.map((donor) => (
-              <DonorCard key={donor.id} donor={donor} />
+              <DonorCard key={donor._id} donor={donor} />
             ))}
           </div>
         ) : (
