@@ -161,7 +161,7 @@ const DonorDirectory = ({ onBackToHome }: DonorDirectoryProps) => {
       {/* Footer */}
       <footer className="mt-16 py-8 px-4 bg-muted text-center">
         <p className="text-muted-foreground text-lg font-medium">
-          💝 "One pint of blood can save three lives." 💝
+          "Just a small amount of your blood can save someone’s life. Be a hero, donate blood."
         </p>
       </footer>
     </div>
